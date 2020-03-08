@@ -221,10 +221,26 @@ class Quiz1State extends State<Quiz1> {
                             }
                           }
                         }
-
-
-
-
+                        else if (questionNumber == 7) {
+                          debugPrint("Party");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 2;
+                            } else {
+                              results[questionNumber - 2] = 4;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 3;
+                            else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          }
+                        }
+                        else {
+                          debugPrint("Invalid result");
+                        }
+                        updateQuestion();
                       },
                       child: new Text(quiz.choices[questionNumber][0],
                         style: new TextStyle(
@@ -238,12 +254,114 @@ class Quiz1State extends State<Quiz1> {
                       minWidth: 120.0,
                       color: Colors.blueGrey,
                       onPressed: (){
+                        if (questionNumber == 0) {
+                          location = 2;
+                          debugPrint("Location: Coco");
+                        }
+                        else if (questionNumber == 1) {
+                          sweet_tooth = 2;
+                          debugPrint("Unsweet Selected");
+                        }
+                        else if (questionNumber == 2) {
+                          debugPrint("Coffee Shop");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 4;
+                            } else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          }
+                          else {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 6;
+                            } else {
+                              results[questionNumber - 2] = 1;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 3) {
+                          debugPrint("New York");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 2;
+                            } else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 5;
+                            else {
+                              results[questionNumber - 2] = 1;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 4) {
+                          debugPrint("Fingers as toes");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 3;
+                            } else {
+                              results[questionNumber - 2] = 4;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 2;
+                            else {
+                              results[questionNumber - 2] = 4;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 5) {
+                          debugPrint("Cookies");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 2;
+                            } else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 2;
+                            else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          }
+                        }
 
-                        if(quiz.choices[questionNumber][1] == quiz.correctAnswers[questionNumber]){
-                          debugPrint("Correct");
-                          finalScore++;
-                        }else{
-                          debugPrint("Wrong");
+                        else if (questionNumber == 6) {
+                          debugPrint("Blue");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 4;
+                            } else {
+                              results[questionNumber - 2] = 1;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 5;
+                            else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 7) {
+                          debugPrint("Watch Movies");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 3;
+                            } else {
+                              results[questionNumber - 2] = 1;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 6;
+                            else {
+                              results[questionNumber - 2] = 4;
+                            }
+                          }
+                        }
+                        else {
+                          debugPrint("Invalid result");
                         }
                         updateQuestion();
                       },
@@ -268,41 +386,227 @@ class Quiz1State extends State<Quiz1> {
                       minWidth: 120.0,
                       color: Colors.blueGrey,
                       onPressed: (){
+                        if (questionNumber == 0) {
+                          debugPrint("Location: Invalid");
+                        }
+                        else if (questionNumber == 1) {
+                          debugPrint("Sweetness: Invalid");
+                        }
+                        else if (questionNumber == 2) {
+                          debugPrint("At Home");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 3;
+                            } else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                          else {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 1;
+                            } else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 3) {
+                          debugPrint("Tokyo");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 4;
+                            } else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 3;
+                            else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 4) {
+                          debugPrint("Invalid");
+                        }
+                        else if (questionNumber == 5) {
+                          debugPrint("Chips");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 3;
+                            } else {
+                              results[questionNumber - 2] = 1;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 3;
+                            else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                        }
 
-                        if(quiz.choices[questionNumber][2] == quiz.correctAnswers[questionNumber]){
-                          debugPrint("Correct");
-                          finalScore++;
-                        }else{
-                          debugPrint("Wrong");
+                        else if (questionNumber == 6) {
+                          debugPrint("White");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 2;
+                            } else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 1;
+                            else {
+                              results[questionNumber - 2] =1;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 7) {
+                          debugPrint("Sleep");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 4;
+                            } else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 1;
+                            else {
+                              results[questionNumber - 2] = 5;
+                            }
+                          }
+                        }
+                        else {
+                          debugPrint("Invalid result");
                         }
                         updateQuestion();
                       },
-                      child: new Text(quiz.choices[questionNumber][2],
+                      child: new Text(quiz.choices[questionNumber][1],
                         style: new TextStyle(
                             fontSize: 20.0,
                             color: Colors.white
                         ),),
                     ),
 
+                  ],
+                ),
+
+                new Padding(padding: EdgeInsets.all(10.0)),
+
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+
                     //button 4
                     new MaterialButton(
                       minWidth: 120.0,
                       color: Colors.blueGrey,
                       onPressed: (){
+                        if (questionNumber == 0) {
+                          debugPrint("Location: Invalid");
+                        }
+                        else if (questionNumber == 1) {
+                          debugPrint("Sweetness: Invalid");
+                        }
+                        else if (questionNumber == 2) {
+                          debugPrint("At Home");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 3;
+                            } else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                          else {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 1;
+                            } else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 3) {
+                          debugPrint("Tokyo");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 4;
+                            } else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 3;
+                            else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 4) {
+                          debugPrint("Invalid");
+                        }
+                        else if (questionNumber == 5) {
+                          debugPrint("Chips");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 3;
+                            } else {
+                              results[questionNumber - 2] = 1;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 3;
+                            else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          }
+                        }
 
-                        if(quiz.choices[questionNumber][3] == quiz.correctAnswers[questionNumber]){
-                          debugPrint("Correct");
-                          finalScore++;
-                        }else{
-                          debugPrint("Wrong");
+                        else if (questionNumber == 6) {
+                          debugPrint("White");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 2;
+                            } else {
+                              results[questionNumber - 2] = 2;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 1;
+                            else {
+                              results[questionNumber - 2] =1;
+                            }
+                          }
+                        }
+                        else if (questionNumber == 7) {
+                          debugPrint("Sleep");
+                          if (sweet_tooth == 1) {
+                            if (location == 1) {
+                              results[questionNumber - 2] = 4;
+                            } else {
+                              results[questionNumber - 2] = 3;
+                            }
+                          } else {
+                            if (location == 1)
+                              results[questionNumber - 2] = 1;
+                            else {
+                              results[questionNumber - 2] = 5;
+                            }
+                          }
+                        }
+                        else {
+                          debugPrint("Invalid result");
                         }
                         updateQuestion();
                       },
-                      child: new Text(quiz.choices[questionNumber][3],
+                      child: new Text(quiz.choices[questionNumber][1],
                         style: new TextStyle(
                             fontSize: 20.0,
                             color: Colors.white
                         ),),
+                    ),
+
+                  ],
                     ),
 
                   ],
