@@ -43,12 +43,13 @@ var pf_nonsweet = [
   "Oolong Milk Tea",
   "Taro Smoothie",
   "Matcha Ice Cream",
-  "UTO"
+  "UFO"
 ];
 
 
 class MenuQuiz{
-var quiz_images = ["alligator", "cat", "dog", "owl"];
+var quiz_images = ["party", "sleep", "start_text", "party", "party",
+                    "party", "sleep", "start_text"];
 
 var questions = [
   "Choose your location.",
@@ -665,7 +666,7 @@ class Quiz1State extends State<Quiz1> {
         } else {
           debugPrint("Either location or sweetness unselected.");
         }
-        
+
         Navigator.push(context, new MaterialPageRoute(
             builder: (context) => new Summary(ret: result,)));
       }else
@@ -681,7 +682,7 @@ class Summary extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    
+
   return new WillPopScope(
     onWillPop: () async => false,
     child: Scaffold(
