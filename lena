@@ -9,10 +9,10 @@ var results = [0, 0, 0, 0, 0, 0];
 var questionNumber = 0;
 var quiz = new MenuQuiz();
 
-
-class MenuQuiz{
-var quiz_images = ["alligator", "cat", "dog", "owl"];
-/* we need 8 images (1 image per question) */
+var freq = [0, 0, 0, 0, 0, 0, 0];
+int menu_num = 0;
+int max = 0;
+var result;
 
 var coco_nonsweet = [
   "Black Tea Macchiato",
@@ -45,6 +45,10 @@ var pf_nonsweet = [
   "Matcha Ice Cream",
   "UTO"
 ];
+
+
+class MenuQuiz{
+var quiz_images = ["alligator", "cat", "dog", "owl"];
 
 var questions = [
   "Choose your location.",
@@ -492,12 +496,6 @@ class Quiz1State extends State<Quiz1> {
                   ],
                 ),
 
-                new Padding(padding: EdgeInsets.all(10.0)),
-
-                new Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-
                     //button 4
                     new MaterialButton(
                       minWidth: 120.0,
@@ -510,35 +508,35 @@ class Quiz1State extends State<Quiz1> {
                           debugPrint("Sweetness: Invalid");
                         }
                         else if (questionNumber == 2) {
-                          debugPrint("At Home");
+                          debugPrint("I do not study");
                           if (sweet_tooth == 1) {
                             if (location == 1) {
-                              results[questionNumber - 2] = 3;
-                            } else {
                               results[questionNumber - 2] = 2;
+                            } else {
+                              results[questionNumber - 2] = 5;
                             }
                           }
                           else {
                             if (location == 1) {
-                              results[questionNumber - 2] = 1;
+                              results[questionNumber - 2] = 4;
                             } else {
-                              results[questionNumber - 2] = 2;
+                              results[questionNumber - 2] = 4;
                             }
                           }
                         }
                         else if (questionNumber == 3) {
-                          debugPrint("Tokyo");
+                          debugPrint("Bali");
                           if (sweet_tooth == 1) {
                             if (location == 1) {
-                              results[questionNumber - 2] = 4;
+                              results[questionNumber - 2] = 1;
                             } else {
-                              results[questionNumber - 2] = 3;
+                              results[questionNumber - 2] = 4;
                             }
                           } else {
                             if (location == 1)
-                              results[questionNumber - 2] = 3;
+                              results[questionNumber - 2] = 4;
                             else {
-                              results[questionNumber - 2] = 2;
+                              results[questionNumber - 2] = 5;
                             }
                           }
                         }
@@ -546,51 +544,51 @@ class Quiz1State extends State<Quiz1> {
                           debugPrint("Invalid");
                         }
                         else if (questionNumber == 5) {
-                          debugPrint("Chips");
+                          debugPrint("Nuts");
                           if (sweet_tooth == 1) {
                             if (location == 1) {
-                              results[questionNumber - 2] = 3;
+                              results[questionNumber - 2] = 4;
                             } else {
-                              results[questionNumber - 2] = 1;
+                              results[questionNumber - 2] = 4;
                             }
                           } else {
                             if (location == 1)
-                              results[questionNumber - 2] = 3;
+                              results[questionNumber - 2] = 5;
                             else {
-                              results[questionNumber - 2] = 2;
+                              results[questionNumber - 2] = 1;
                             }
                           }
                         }
 
                         else if (questionNumber == 6) {
-                          debugPrint("White");
+                          debugPrint("Yellow");
                           if (sweet_tooth == 1) {
                             if (location == 1) {
-                              results[questionNumber - 2] = 2;
+                              results[questionNumber - 2] = 1;
                             } else {
-                              results[questionNumber - 2] = 2;
+                              results[questionNumber - 2] = 4;
                             }
                           } else {
                             if (location == 1)
-                              results[questionNumber - 2] = 1;
+                              results[questionNumber - 2] = 6;
                             else {
-                              results[questionNumber - 2] =1;
+                              results[questionNumber - 2] =4;
                             }
                           }
                         }
                         else if (questionNumber == 7) {
-                          debugPrint("Sleep");
+                          debugPrint("Exercise");
                           if (sweet_tooth == 1) {
                             if (location == 1) {
-                              results[questionNumber - 2] = 4;
+                              results[questionNumber - 2] = 1;
                             } else {
-                              results[questionNumber - 2] = 3;
+                              results[questionNumber - 2] = 2;
                             }
                           } else {
                             if (location == 1)
-                              results[questionNumber - 2] = 1;
+                              results[questionNumber - 2] = 4;
                             else {
-                              results[questionNumber - 2] = 5;
+                              results[questionNumber - 2] = 2;
                             }
                           }
                         }
@@ -606,13 +604,7 @@ class Quiz1State extends State<Quiz1> {
                         ),),
                     ),
 
-                  ],
-                    ),
-
-                  ],
-                ),
-
-                new Padding(padding: EdgeInsets.all(15.0)),
+            new Padding(padding: EdgeInsets.all(15.0)),
 
                 new Container(
                     alignment: Alignment.bottomCenter,
@@ -629,9 +621,6 @@ class Quiz1State extends State<Quiz1> {
                     )
                 ),
 
-
-
-
               ],
             ),
           ),
@@ -643,69 +632,91 @@ class Quiz1State extends State<Quiz1> {
   void resetQuiz(){
     setState(() {
       Navigator.pop(context);
-      finalScore = 0;
+      location = 0;
+      sweet_tooth = 0;
+      results = [0, 0, 0, 0, 0, 0];
       questionNumber = 0;
     });
   }
 
-
-
   void updateQuestion(){
     setState(() {
-      if(questionNumber == quiz.questions.length - 1){
-        Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Summary(score: finalScore,)));
+      if(questionNumber == quiz.questions.length - 1) {
+        for (int i = 0; i < 6; i++)
+          freq[results[i]]++;
 
-      }else{
+        max = freq[1];
+        menu_num = 1;
+        for (int i = 2; i < 7; i++) {
+          if (freq[i] > max) {
+            max = freq[i];
+            menu_num = i;
+          }
+        }
+
+        if (location == 1 && sweet_tooth == 1) {
+          result = pf_sweet[menu_num];
+        } else if (location == 1 && sweet_tooth == 2) {
+          result = pf_nonsweet[menu_num];
+        } else if (location == 2 && sweet_tooth == 1) {
+          result = coco_sweet[menu_num];
+        } else if (location == 1 && sweet_tooth == 2) {
+          result = coco_nonsweet[menu_num];
+        } else {
+          debugPrint("Either location or sweetness unselected.");
+        }
+        
+        Navigator.push(context, new MaterialPageRoute(
+            builder: (context) => new Summary(ret: result,)));
+      }else
         questionNumber++;
-      }
     });
   }
 }
 
 
 class Summary extends StatelessWidget{
-  final int score;
-  Summary({Key key, @required this.score}) : super(key: key);
+  final ret;
+  Summary({Key key, @required this.ret}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return new WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
+    
+  return new WillPopScope(
+    onWillPop: () async => false,
+    child: Scaffold(
 
-        body: new Container(
-          child: new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+      body: new Container(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
 
-              new Text("Final Score: $score",
-                style: new TextStyle(
-                    fontSize: 35.0
-                ),),
+            new Text("Here's my recommendation for you!: $ret",
+              style: new TextStyle(
+                  fontSize: 35.0
+              ),),
 
-              new Padding(padding: EdgeInsets.all(30.0)),
+            new Padding(padding: EdgeInsets.all(30.0)),
 
-              new MaterialButton(
-                color: Colors.red,
-                onPressed: (){
-                  questionNumber = 0;
-                  finalScore = 0;
-                  Navigator.pop(context);
+            new MaterialButton(
+              color: Colors.red,
+              onPressed: (){
+                location = 0;
+                sweet_tooth = 0;
+                results = [0, 0, 0, 0, 0, 0];
+                questionNumber = 0;
+                Navigator.pop(context);
                 },
-                child: new Text("Reset Quiz",
-                  style: new TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white
-                  ),),)
+              child: new Text("Reset Quiz",
+                style: new TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white
+                ),),)
 
-            ],
-          ),
-        ),
-
-
-      ),
-    );
+  ],
+  ),
+  ),
+  ),
+  );
   }
-
-
 }
