@@ -48,8 +48,14 @@ var pf_nonsweet = [
 
 
 class MenuQuiz{
-var quiz_images = ["party", "sleep", "start_text", "party", "party",
-                    "party", "sleep", "start_text"];
+var quiz_images1 = ['party', "BaliPic", "libraryPic", "EgyptPic", "waving-hand",
+                    "fruitPic", "red", "party"];
+var quiz_images2 = ['BaliPic', "BaliPic", "coffeeShop", "New York", "foot-emoji",
+  "cookiePic", "blue", "watch movie"];
+var quiz_images3 = ['BaliPic', "BaliPic", "homePic", "TokyoPic", "party",
+  "chipsPic", "white", "sleep"];
+var quiz_images4 = ['BaliPic', "BaliPic", "noStudyPic", "BaliPic", "party",
+  "nutsPic", "yellow", "exercise"];
 
 var questions = [
   "Choose your location.",
@@ -111,13 +117,6 @@ class Quiz1State extends State<Quiz1> {
                 ),
 
 
-                //image
-                new Padding(padding: EdgeInsets.all(10.0)),
-
-                new Image.asset(
-                  "images/${quiz.quiz_images[questionNumber]}.jpg",
-                ),
-
                 new Padding(padding: EdgeInsets.all(10.0)),
 
                 new Text(quiz.questions[questionNumber],
@@ -125,11 +124,27 @@ class Quiz1State extends State<Quiz1> {
                     fontSize: 20.0,
                   ),),
 
+                new Padding(padding: EdgeInsets.all(20.0)),
+
+            Row(
+
+              children: [
+                Expanded(child: Image.asset('assets/Images/${quiz.quiz_images1[questionNumber]}.jpg',
+                  height: 100,
+                ), ),
+
+                  Expanded(child: Image.asset('assets/Images/${quiz.quiz_images2[questionNumber]}.jpg',
+                    height: 100,
+                  ), ),
+      ],
+            ),
+
                 new Padding(padding: EdgeInsets.all(10.0)),
 
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
+
 
                     //button 1
                     new MaterialButton(
@@ -255,7 +270,10 @@ class Quiz1State extends State<Quiz1> {
                     ),
 
                     //button 2
+
                     new MaterialButton(
+
+
                       minWidth: 120.0,
                       color: Colors.blueGrey,
                       onPressed: (){
@@ -380,12 +398,28 @@ class Quiz1State extends State<Quiz1> {
                   ],
                 ),
 
+                new Padding(padding: EdgeInsets.all(20.0)),
+
+                Row(
+
+                  children: [
+                    Expanded(child: Image.asset('assets/Images/${quiz.quiz_images3[questionNumber]}.jpg',
+                      height: 100,
+                    ), ),
+
+                    Expanded(child: Image.asset('assets/Images/${quiz.quiz_images4[questionNumber]}.jpg',
+                      height: 100,
+                    ), ),
+                  ],
+                ),
+
                 new Padding(padding: EdgeInsets.all(10.0)),
+
+                new Padding(padding: EdgeInsets.all(10)),
 
                 new Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-
                     //button 3
                     new MaterialButton(
                       minWidth: 120.0,
@@ -487,15 +521,12 @@ class Quiz1State extends State<Quiz1> {
                         }
                         updateQuestion();
                       },
-                      child: new Text(quiz.choices[questionNumber][1],
+                      child: new Text(quiz.choices[questionNumber][2],
                         style: new TextStyle(
                             fontSize: 20.0,
                             color: Colors.white
                         ),),
                     ),
-
-                  ],
-                ),
 
                     //button 4
                     new MaterialButton(
@@ -598,12 +629,14 @@ class Quiz1State extends State<Quiz1> {
                         }
                         updateQuestion();
                       },
-                      child: new Text(quiz.choices[questionNumber][1],
+                      child: new Text(quiz.choices[questionNumber][3],
                         style: new TextStyle(
                             fontSize: 20.0,
                             color: Colors.white
                         ),),
                     ),
+                  ],
+                ),
 
             new Padding(padding: EdgeInsets.all(15.0)),
 
@@ -706,6 +739,9 @@ class Summary extends StatelessWidget{
                 sweet_tooth = 0;
                 results = [0, 0, 0, 0, 0, 0];
                 questionNumber = 0;
+                freq = [0,0,0,0,0,0,0];
+                menu_num = 0;
+                max =0;
                 Navigator.pop(context);
                 },
               child: new Text("Reset Quiz",
