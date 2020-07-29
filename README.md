@@ -1,6 +1,8 @@
 # bobabuddy
 
-A new Flutter project.
+A new Flutter project.  
+Submitted to NwPlus' cmd-f Hackathon held March 7-8, 2020    
+Team Members: Emily Lukas, Sofia Bandeira, Lena Kim, Veronica Nguyen
 
 ## Getting Started
 
